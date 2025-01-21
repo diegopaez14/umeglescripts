@@ -1,0 +1,57 @@
+// ==UserScript==
+// @name         LATAM Uhmegle
+// @namespace    http://tampermonkey.net/
+// @version      2024-12-10
+// @description  try to take over the world!
+// @author       You
+// @match        https://uhmegle.com/text/
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=uhmegle.com
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+    // Suponiendo que solo hay un elemento con la clase "countryInfo"
+const elemento = document.querySelector('.countryInfo');
+const pais = document.getElementById('countryName');
+
+    const spanishSpeakingCountries = [
+    "ARGENTINA", "BOLIVIA", "CHILE", "COLOMBIA", "COSTA RICA",
+    "CUBA", "ECUADOR", "EL SALVADOR", "SPAIN", "GUATEMALA",
+    "HONDURAS", "MEXICO", "NICARAGUA", "PANAMA", "PARAGUAY",
+    "PERU", "DOMINICAN REPUBLIC", "URUGUAY", "VENEZUELA", "EQUATORIAL GUINEA"
+];
+
+// Función para verificar el estilo
+function verificarEstilo() {
+    if (elemento.style.display === 'flex') {
+        //console.log('El elemento con clase countryInfo se ha mostrado como flex');
+        // Aquí va tu código a ejecutar cuando se muestre
+        if(spanishSpeakingCountries.includes(pais.textContent.toUpperCase())){
+                //console.log("Es de LATAM");
+            }else{
+                //console.log("Es de otro continente");
+                var botonDesc = document.querySelector('.bottomButton.outlined.skipButton');
+
+                //setTimeout(function(){
+                botonDesc.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+                //}, 300);
+                setTimeout(function(){
+                botonDesc.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+                }, 400);
+            }
+    }
+}
+
+// Crear un MutationObserver
+const observer = new MutationObserver(mutationsList => {
+    for (const mutation of mutationsList) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+            verificarEstilo();
+        }
+    }
+});
+
+// Configurar el observador para observar cambios en el estilo del elemento
+observer.observe(elemento, { attributes: true });
+})();

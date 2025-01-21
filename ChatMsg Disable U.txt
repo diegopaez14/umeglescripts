@@ -1,0 +1,49 @@
+// ==UserScript==
+// @name         ChatMsg DisableDesconect UHM
+// @namespace    http://tampermonkey.net/
+// @version      2025-01-21
+// @description  try to take over the world!
+// @author       You
+// @match        https://uhmegle.com/text/
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=uhmegle.com
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // Seleccionamos el elemento a observar
+var textoDelBoton = document.querySelector('.bottomButton.outlined.skipButton').getElementsByClassName("mainText")[0];
+var chatmsg = document.getElementsByClassName('messageInput')[0];
+// Creamos el MutationObserver
+const observer = new MutationObserver((mutationsList) => {
+  for (const mutation of mutationsList) {
+    if (mutation.type === 'characterData' || mutation.type === 'childList') {
+      //console.log('El texto o contenido cambió:', textoDelBoton.textContent);
+        if(textoDelBoton.textContent === "New..." || textoDelBoton.textContent === "Start"){
+            chatmsg.disabled = true;
+        }else{
+            chatmsg.disabled = false;
+            chatmsg.focus();
+            if(textoDelBoton.textContent === "Stop"){
+            chatmsg.value = "";
+            }
+        }
+    }
+  }
+});
+
+// Configuramos qué queremos observar (en este caso, cambios en el texto o hijos del nodo)
+const config = {
+  characterData: true, // Cambios en nodos de texto
+  childList: true, // Cambios en los nodos hijos
+  subtree: true,   // Observar también los descendientes
+};
+
+// Iniciamos el observer en el elemento seleccionado
+observer.observe(textoDelBoton, config);
+
+// Ejemplo para desconectar el observer si ya no lo necesitas
+// observer.disconnect();
+
+})();

@@ -1,0 +1,122 @@
+// ==UserScript==
+// @name         Hora Mensajes Umegle
+// @namespace    http://tampermonkey.net/
+// @version      2025-01-21
+// @description  try to take over the world!
+// @author       You
+// @match        https://uhmegle.com/text/
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=uhmegle.com
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+    var cuerpo = document.getElementsByTagName("body")[0];
+
+    var botonEnviar = "";
+    var textoMensaje = "";
+
+    var scripts2 = document.createElement("SCRIPT");
+
+    cuerpo.appendChild(scripts2);
+
+    setInterval(function(){
+        try{
+            botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+            botonEnviar.setAttribute("onclick", "colocarHoraMensaje();");
+            botonEnviar.setAttribute("onmousedown", "colocarHoraMensaje();");
+
+            textoMensaje = document.getElementsByClassName("messageInput")[0];
+            textoMensaje.setAttribute("onkeyup", "if(event.which==13){colocarHoraMensaje();}");
+        }catch(err){
+
+        }
+    },1);
+
+        var mensajesTotalesMios = 0;
+        var mensajesTotalesExtr = 0;
+    var desconectado = false;
+
+    setInterval(function(){
+        try{
+            var mainMessages = document.getElementById('mainMessages');
+            var divsWithStranger = mainMessages.querySelectorAll('div:has(> span.Stranger)');
+            var divsWithYou = mainMessages.querySelectorAll('div:has(> span.You)');
+
+        var mensajesMios = divsWithYou;
+        var mensajesExtr = divsWithStranger;
+
+        var tamanoMensajesM = mensajesMios.length;
+        var tamanoMensajesE = mensajesExtr.length;
+
+        var fecha = new Date();
+        var horaDeMensaje = fecha.toTimeString().split(' ')[0];
+
+        if(mensajesTotalesExtr < tamanoMensajesE || mensajesTotalesExtr == 0){
+            var ultimoMensajeExt = mensajesExtr[tamanoMensajesE - 1];
+            ultimoMensajeExt.innerHTML += "   <span style='font-size:9px; background-color:red;color:white;float:right;'>  "+horaDeMensaje+"</span>";
+            mensajesTotalesExtr = tamanoMensajesE;
+        }
+            if(mensajesTotalesExtr > 0 && tamanoMensajesE == 0){
+            mensajesTotalesExtr = 0;
+                desconectado = false;
+            }
+
+
+
+        }catch(err){
+            console.log(err);
+        }
+
+        try{
+                var logsOmegle = document.getElementsByClassName("information");
+            for(var l = 0; l < logsOmegle.length; l++){
+                var ultimoLog = logsOmegle[l];
+                if(ultimoLog.innerHTML == "You have disconnected" || ultimoLog.innerHTML == "Stranger has disconnected" || ultimoLog.innerHTML.indexOf("Technical error") > -1){
+                    //if(!desconectado){
+                        ultimoLog.innerHTML += "   <span style='font-size:9px; background-color:black;color:white;float:right;'>  "+horaDeMensaje+"</span>";
+                        desconectado = true;
+                    //}
+                }
+            }
+
+            }catch(err){
+
+            }
+
+        },1);
+
+    scripts2.innerHTML = "function colocarHoraMensaje(){"+
+        "var mensajesTotalesMios = 0;"+
+        "var mensajesTotalesExtr = 0;"+
+
+
+        "try{ "+
+
+        "var mainMessages = document.getElementById('mainMessages');"+
+         "   var divsWithStranger = mainMessages.querySelectorAll('div:has(> span.Stranger)');"+
+          "  var divsWithYou = mainMessages.querySelectorAll('div:has(> span.You)');"+
+
+        "var mensajesMios = divsWithYou;"+
+        "var mensajesExtr = divsWithStranger;"+
+
+        "var tamanoMensajesM = mensajesMios.length;"+
+        "var tamanoMensajesE = mensajesExtr.length;"+
+
+        "var fecha = new Date();"+
+        "var horaDeMensaje = fecha.toTimeString().split(' ')[0]; "+
+
+        "if(mensajesTotalesMios < tamanoMensajesM || mensajesTotalesMios == 0){"+
+        "    var ultimoMensajeMio = mensajesMios[tamanoMensajesM - 1];"+
+        " var horaMensajeMio = ultimoMensajeMio.getElementsByTagName('span')[1];"+
+        " if(horaMensajeMio == null){"+
+        "    ultimoMensajeMio.innerHTML += '   <span style=\"font-size:8.5px; background-color:blue;color:white;float:right;\">  '+horaDeMensaje+'</span>';"+
+        "    mensajesTotalesMios = tamanoMensajesM;"+
+        "}"+
+        "}"+
+
+        "}catch(err){"+
+        "    console.log(err);"+
+        "}"+
+    "}";
+})();

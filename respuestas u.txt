@@ -1,0 +1,873 @@
+// ==UserScript==
+// @name         Respuestas Automaticas uhmegle AI
+// @namespace    http://tampermonkey.net/
+// @version      2025-01-20
+// @description  try to take over the world!
+// @author       You
+// @match        https://uhmegle.com/text/
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=uhmegle.com
+// @grant        none
+// ==/UserScript==
+
+
+(function() {
+    'use strict';
+    var cuerpo = document.getElementsByTagName("body")[0];
+
+    var botonEnviar = "";
+    var textoMensaje = "";
+
+    var scripts2 = document.createElement("SCRIPT");
+
+    cuerpo.appendChild(scripts2);
+        var mensajesTotalesMios = 0;
+        var mensajesTotalesExtr = 0;
+
+    setInterval(function(){
+        try{
+            var mainMessages = document.getElementById('mainMessages');
+            var divsWithStranger = mainMessages.querySelectorAll('div:has(> span.Stranger)');
+            var divsWithYou = mainMessages.querySelectorAll('div:has(> span.You)');
+
+        var mensajesMios = [];
+        var mensajesExtr = [];
+
+            divsWithStranger.forEach(div => {
+                // Aquí puedes realizar acciones con cada div encontrado, por ejemplo:
+                var htmlContent = div.innerHTML;
+
+                var tempDiv = document.createElement('div');
+                tempDiv.innerHTML = htmlContent;
+
+                // Seleccionar y eliminar el span
+                var span = tempDiv.querySelector('span');
+                span.remove();
+
+                // Actualizar el contenido de htmlContent
+                htmlContent = tempDiv.innerHTML;
+
+                mensajesExtr.push(htmlContent);
+            });
+
+        var tamanoMensajesM = mensajesMios.length;
+        var tamanoMensajesE = mensajesExtr.length;
+
+        if(mensajesTotalesExtr < tamanoMensajesE || mensajesTotalesExtr == 0){
+            var ultimoMensajeExt = mensajesExtr[tamanoMensajesE - 1];
+            mensajesTotalesExtr = tamanoMensajesE;
+
+            var mensaje = ultimoMensajeExt;
+
+            //RESPUESTAS AUTOMATICAS
+            if(mensaje.indexOf("lNSTAG&gt;&gt;") > -1 ||
+               mensaje.indexOf("lnstag&gt;&gt;") > -1 ||
+               mensaje.indexOf("lNSTAGM&gt;&gt;&gt;") > -1 ||
+               mensaje.indexOf("lNSTA&gt;&gt;&gt;") > -1 ||
+              mensaje.indexOf("lNST4G&gt;&gt;") > -1 ||
+              mensaje.indexOf("LNZT4GR4M &gt;&gt;") > -1 ||
+              mensaje.indexOf("Twitter&gt;&gt;") > -1 ||
+              mensaje.indexOf("1nszz4,gr &gt;&gt;&gt;") > -1 ||
+              mensaje.indexOf("lNzT4Gr&gt;&gt;") > -1 ||
+              mensaje.indexOf("lNzT4G&gt;&gt;") > -1 ||
+              mensaje.indexOf("instagram&gt;&gt;") > -1 ||
+              mensaje.indexOf("Instagram&gt;&gt;") > -1 ||
+              mensaje.indexOf("lnstagr&gt;&gt;") > -1 ||
+              mensaje.indexOf("lNZTT4GRM &gt;&gt;") > -1 ||
+              mensaje.indexOf("lNZST4&RAM&gt;&gt;") > -1 ||
+              mensaje.indexOf("lnszT4Grr&gt;&gt;") > -1 ||
+              mensaje.indexOf("lNSzT4Gr&gt;&gt;") > -1 ||
+              mensaje.indexOf("ig&gt;&gt;") > -1 ||
+              mensaje.indexOf("iztarg&gt;&gt;") > -1 ||
+              mensaje.indexOf("intag&gt;&gt;") > -1 ||
+              mensaje.indexOf("iztag&gt;&gt;") > -1 ||
+              mensaje == "hola cariño estoy regalando contenido HOT gratis en mi link de Instagram viviana_ortizzau" ||
+              mensaje == "holi papasito soy m y tengo wsp y mi pakck en mi ig que es este lhauradulce" ||
+              mensaje=="vivisaldariagat" ||
+              mensaje.indexOf("ln2T4G") > -1 ||
+              mensaje.indexOf("lNZT4AGR&gt;") > -1 ||
+              mensaje.indexOf("tagra&gt;&gt;") > -1 ||
+              mensaje.indexOf("in s tag r a:::") > -1 ||
+              mensaje.indexOf("asi&gt;&gt;") > -1 ||
+               mensaje.indexOf("instag(ELIMINA LOS ESPACIOS)=&gt;&gt;") > -1 ||
+              mensaje.indexOf("insta( ELIMINA LOSespacios)&gt;&gt;") > -1 ||
+              mensaje.indexOf("busca asi &gt;&gt;") > -1 ||
+              mensaje.indexOf("camilasexi1") > -1 ||
+              mensaje.indexOf("twette&gt;&gt;") > -1 ||
+              mensaje.indexOf("twetter&gt;") > -1 ||
+              mensaje.indexOf("telegram&gt;&gt;&gt;") > -1 ||
+              mensaje.indexOf("vivisaldariag") > -1 ||
+              mensaje.indexOf("insta gram ( TODO JUNTO )") > -1||
+              mensaje.indexOf("laurisscardona") > -1 ||
+              mensaje.indexOf("camilasexi2") > -1 ||
+              mensaje.indexOf("cami.lalasexi") > -1 ||
+              mensaje.indexOf("sofiaa_zapata") > -1
+              || mensaje.indexOf("lauri.tasexi") > -1
+              || mensaje.indexOf("isabel.sexi") > -1
+              || mensaje.indexOf("laura colombia") > -1
+              || mensaje.indexOf("cami.laperezhot") > -1
+              || mensaje.indexOf("isa.beltorres") > -1 ||
+              mensaje.indexOf("maria colombiana") > -1 ||
+              mensaje.indexOf("jg_shophot") > -1 ||
+              mensaje.indexOf("lauracantillo") > -1 ||
+              mensaje.indexOf("rojas.andreamilena") > -1 ||
+              mensaje.indexOf("laura.gomez") > -1 ||
+              mensaje.indexOf("pelaes.luisa") > -1 ||
+              mensaje.indexOf("camilatorreshot") > -1 ||
+              mensaje.indexOf("isabelkollins") > -1 ||
+              mensaje.indexOf("danielagomez") > -1 ||
+              mensaje.indexOf("veronicarivera") > -1 ||
+              mensaje.indexOf("palacios_paulaandrea") > -1 ||
+              mensaje.indexOf("nataliarestrepo") > -1 ||
+              mensaje.indexOf("elisaperez") > -1 ||
+              mensaje.indexOf("paolaserna") > -1 ||
+              mensaje.indexOf("kellyvanesarios") > -1 ||
+              mensaje.indexOf("perlamarin") > -1 ||
+              mensaje.indexOf("pamelatorres") > -1){
+                if(tamanoMensajesE > 0){
+            setInterval(function(){
+                document.getElementsByClassName('messageInput')[0].value= "Falso";
+                setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 40);
+            }, 1);
+                }
+            }
+
+            if(mensaje.toUpperCase() == "HOLA" || mensaje.toUpperCase() == "HOLA?"){
+            document.getElementsByClassName('messageInput')[0].value= "Hola";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: false }));
+            }, 9);
+            }
+
+            if(mensaje == "H" || mensaje == "h" || mensaje == "h25" || mensaje == "H25"){
+            document.getElementsByClassName('messageInput')[0].value= "x2";
+                //document.getElementsByClassName('messageInput')[0].value= "H es la letra correspondiente a la Troncal H Caracas sur del sistema de Transporte masivo de Bogota, Colombia Transmilenio, Esta troncal Caracas sur inicia con la estacion cabecera Portal Usme y finaliza en la estacion Hospital, la cual esta ubicada cerca al hospital de la Misericordia, tambien se une el ramal del tunal, el cual inicia desde el Portal Tunal hasta la estacion Parque, para enseguida conectar con la estacion Santa lucia. Cuenta con 2 estaciones intermedias que ofrecen servicio de alimentador (Calle 40 Sur y Molinos) y atiende la demanda de los barrios San Bernardo, Hortua, Restrepo, Olaya, Quiroga, Lomas, Ingles, Claret, Santa Lucia, San Carlos, Diana turbay, Molinos y Centro Usme";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "H HOT" || mensaje.toUpperCase() == "XD?"){
+            document.getElementsByClassName('messageInput')[0].value= "xD";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "Holaa"){
+            document.getElementsByClassName('messageInput')[0].value= "Holaa";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "holaa"){
+            document.getElementsByClassName('messageInput')[0].value= "holaa";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("__.claaudia.__") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "Hola Claudia por favor agregame en Facebook soy Diego AP https://www.facebook.com/DieguiithoPaez/";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("vikialgo_5") > -1 || mensaje.indexOf("xandraa._ale") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "Y tu sigue a @mrplaymusicfm";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("irenegarciaba_") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "Tambien pasa tu Facebook";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("its.marifuentes") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "Hola maria paula por favor pasanos tu facebook para que podamos conocerte mejor, recuerda que el celular tiene muchas apps aparte de instagram y una de las mejores es FACEBOOK";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "M"){
+            document.getElementsByClassName('messageInput')[0].value= "H";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "Callate"){
+            document.getElementsByClassName('messageInput')[0].value= "Callate tu jajajaja xD";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("ornee_citati") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "Hola ornellita, ya nos pasaste tu Insta y tu Tiktok, ahora pasanos tu FACEBOOK para poder conocerte mucho mas :)";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "hey"){
+            document.getElementsByClassName('messageInput')[0].value= "hey";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("@laritamartinezzpriv") > -1
+               || mensaje.indexOf("belenn_br11vn") > -1
+               || mensaje.indexOf("maca_roldan22") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "VENGO DE OMEGLE :v Jajajajajjajajajjajajajajjajajajajajjajaja dame mi regalo o te banearan la cuenta";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            var mensajeNombre = mensaje.toUpperCase().replaceAll("Ó", "O").replaceAll(" ", "").replaceAll("Á", "A");
+            /*if(mensaje.indexOf("Hola como te llamas") > -1
+               || mensaje.indexOf("Hola, como te llamas") > -1
+               || mensaje.indexOf("Hola cómo te llamas") > -1
+              || mensaje.indexOf("Holaa, cómo te llamas?") > -1
+              || mensaje.indexOf("Hola,como te llamas??") > -1
+              || mensaje.indexOf("hola como te llamas?") > -1
+              || mensaje.indexOf("Hola ... ¿Como te llamas?") > -1
+              || mensaje.indexOf("hola, como te llamas?") > -1
+              || mensaje.indexOf("Hola, cómo te llamas?") > -1
+              || mensaje.indexOf("Hola. Cómo te llamas?") > -1
+              || mensaje.indexOf("Holaa como te llamas") > -1
+              || mensaje.indexOf("Hola, Como te llamas?") > -1
+              || mensaje.indexOf("holaaa, como te llamas?") > -1
+              || mensaje.indexOf("hola como tte llamas??????") > -1
+              || mensaje.indexOf("Hooolis, como te llamas?") > -1
+              || mensaje.toUpperCase().replaceAll(" ", "").replaceAll(".","").replaceAll("?","").replaceAll(",","").replaceAll(":)","").replaceAll("¿","").replaceAll("!","") == "HOLACOMOTELLAMAS"){*/
+            if(mensajeNombre.indexOf("OLA") > -1
+               && mensajeNombre.indexOf("COMO") > -1
+               && mensajeNombre.indexOf("T")
+               && (mensajeNombre.indexOf("LLAMAS") > -1 || mensajeNombre.indexOf("YAMAS") > -1)) {
+                if(mensajeNombre.indexOf("🥳") > -1){
+                    document.getElementsByClassName('messageInput')[0].value= "Por el nombre . jajajajajaajajajasajjajajajajaj xD y porque pones ese emoji al final? A ya se, es para hacer una fiesta porque te acabo de trollear Jajajajajjajajajaja";
+                }else{
+                    document.getElementsByClassName('messageInput')[0].value= "Por el nombre . jajajajajaajajajasajjajajajajaj xD";
+                }
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            //if(mensaje == "hola cual es tu nombre?"){
+            if(mensajeNombre.indexOf("OLA") > -1
+               && mensajeNombre.indexOf("CUAL") > -1
+               && mensajeNombre.indexOf("ES")
+               && mensajeNombre.indexOf("TU") > -1
+               && mensajeNombre.indexOf("NOMBRE") > -1) {
+            document.getElementsByClassName('messageInput')[0].value= "Despues sabras";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "Buenas tardes como te llamas? H"){
+            document.getElementsByClassName('messageInput')[0].value= "Buenas tardes Por el nombre y que es la H al final?";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "Holaaa me llamo Alan tengo 19 busco Amistades :D" ||
+              mensaje == "Holaaaa me llamo Alan tengo 19 busco AMISTADES :D" ||
+              mensaje == "Holaaa me llamo David tengo 18 busco Amigos de 12 :D"){
+            document.getElementsByClassName('messageInput')[0].value= "Hola Alan, buscalas en Facebook xD";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "h o m" || mensaje == "h o m?"){
+            document.getElementsByClassName('messageInput')[0].value= "me da igual";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "H o m" || mensaje == "H o m?" || mensaje == "M o h" || mensaje == "M o h?"
+               || mensaje == "Hombre o mujer" || mensaje == "Hombre o mujer?"){
+            document.getElementsByClassName('messageInput')[0].value= "Me da igual";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "H o M" || mensaje == "H o M?"){
+            document.getElementsByClassName('messageInput')[0].value= "Me da Igual";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "H O M" || mensaje == "H O M?"){
+            document.getElementsByClassName('messageInput')[0].value= "ME DA IGUAL";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "Hm"){
+            document.getElementsByClassName('messageInput')[0].value= "x2h";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "H m"){
+            document.getElementsByClassName('messageInput')[0].value= "M h";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "Mh"){
+            document.getElementsByClassName('messageInput')[0].value= "Hm";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("No quiero tu premio") > -1 ){
+            document.getElementsByClassName('messageInput')[0].value= "Pero el premio es una chica y por eso todo mundo lo quiere xD";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("@juliii_mendozaa") > -1 ){
+            document.getElementsByClassName('messageInput')[0].value= "Y yo me hice un instagram y me dijeron que lo hiciera para reportar tu mierda de cuenta JAJAJAJAJAJJAJAJAJAJAJAAAJJAJAAJAJAJAJAJA";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "M?"){
+            document.getElementsByClassName('messageInput')[0].value= "M de macho";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "H BI"){
+            document.getElementsByClassName('messageInput')[0].value= "Vales por 2 jajaja";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HBI"){
+            document.getElementsByClassName('messageInput')[0].value= "Valespor2jajaja";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "Hola."){
+            document.getElementsByClassName('messageInput')[0].value= "Hola.";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "H."){
+            document.getElementsByClassName('messageInput')[0].value= "x2.";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HOLA ERES MUJER?" || mensaje.toUpperCase() == "ERES MUJER?"
+               || mensaje.toUpperCase() == "HOLA ERES MUJER" || mensaje.toUpperCase() == "ERES MUJER"){
+            document.getElementsByClassName('messageInput')[0].value= "Soy yo";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("http://swiplex.org/") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "pues metete tu red social por el culo JAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJAJA";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "V"){
+            document.getElementsByClassName('messageInput')[0].value= "Verga";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "Y"){
+            document.getElementsByClassName('messageInput')[0].value= "Yo";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "G"){
+            document.getElementsByClassName('messageInput')[0].value= "Gay jajaja";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "B"){
+            document.getElementsByClassName('messageInput')[0].value= "Bonito";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "J"){
+            document.getElementsByClassName('messageInput')[0].value= "Joto jajaja";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "TU PUTA MADRE"){
+            document.getElementsByClassName('messageInput')[0].value= "Sr tumbao jajajajjajajajaja";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            /*if(mensaje == "m"){
+            document.getElementsByClassName('messageInput')[0].value= "h";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }*/
+
+            if(mensaje == "m17" || mensaje == "m18"){
+            document.getElementsByClassName('messageInput')[0].value= "h24";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase().indexOf("MONITO CILINDRERO") > -1 || mensaje.toUpperCase().indexOf("MONITO CILINDRELO") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "Como se llama el Propileno segun la iupac? Quien responda correcto gana un premio";
+                setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("nixcol.ssra") > -1 || mensaje.indexOf("ang_vl20") > -1 || mensaje.indexOf("j.uli_l") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "Cuanto cuestan las de tu pene?";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.indexOf("celestertt") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "Hola celeste te pido el favor de que no seas egoista con las redes sociales, hace poco pediste seguidores en insta por aca, y algunas personas les pareciste genial por lo que ademas de que te siguieron en insta te agregaron en Facebook, y dejaste que te siguieran tranquilamente en Instagram pero cuando te agregaron por Facebook los bloqueaste SIN JUSTA RAZON. Asi que la pregunta es: Por que los bloqueaste? Ellos te hicieron algo? Tienes algo que ocultar en tu Facebook? porque en instagram si y Facebook no? No tienes en cuenta que si las personas te siguen en todas tus redes es porque les pareciste muy interesante y genial? Te pido el favor que dejes de ser egoista con las redes sociales y si te agregan en todo aceptalos en todo, no que buscabas seguidores y amigos? Y por ultimo y con todo respeto te pido el favor de que desbloquees a todas las personas que tengas bloqueadas en tu Facebook. Gracias por leer si es que el bot te permite.";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "Quieres ver mi pene"){
+            document.getElementsByClassName('messageInput')[0].value= "Jajajajajajajajajaja eeeeeeste men. . Como se llama el Propileno segun la iupac? Quien responda correcto gana un premio";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "OTRA VEZ TU?" || mensaje.toUpperCase() == "OTRA VEZ TU"){
+            document.getElementsByClassName('messageInput')[0].value= "Otra oportunidad";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase().indexOf("ABURR") > -1){
+            document.getElementsByClassName('messageInput')[0].value= "Pues si no estoy para divertirlo jajajajjajajaajajsjaajajajajajajajajasjksjjdwidioeorfokggpypppupupputo xD";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "H o"){
+                document.getElementsByClassName('messageInput')[0].value= "O que?";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "Hola H o M"){
+                document.getElementsByClassName('messageInput')[0].value= "Hola Me da Igual";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "Hola que tal? Mi nombre es Lucia 19 años Soy de Mexico y Doy contenido Hot🔥😈 a cambio de apoyo econmico, esto lo hago por necesidad de pagar una operacion de un perrito que rescate y adopte🥺🥺🥺 , SOLO MANDAME MENSAJE SI VAS A COPERA(NOPIERDAS TU TIEMPO O TE BLOQUEAREE),NO ES ESTAFA MANDO REFERENCIAS DE CLIENTES TELEGRAM: Lucc2702"){
+                document.getElementsByClassName('messageInput')[0].value= "Jajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajajaj volvio la historia super reforzada jajajaja. Bueno ahora te cuento la mia. Hola que tal yo soy don lucio y vendo fotos de mi pene a cambio de apoyo economico y eso lo hago porque tengo una lombriz que nacio sin patas y necesito pagarle a un veterinario para que se las ponga jajajajajajjajjajjaajajajajajj";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HOLA H"){
+                document.getElementsByClassName('messageInput')[0].value= "Hola x2";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HOLA M"){
+                document.getElementsByClassName('messageInput')[0].value= "Hola h";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HILA" || mensaje.toUpperCase() == "HOA" || mensaje.toUpperCase() == "HOAL" || mensaje.toUpperCase() == "HOLW" || mensaje.toUpperCase() == "HOÑA" || mensaje.toUpperCase() == "HOL" || mensaje.toUpperCase() == "HOMA" || mensaje.toUpperCase() == "HOKA" || mensaje.toUpperCase() == "OLA" || mensaje.toUpperCase() == "HOLS" || mensaje.toUpperCase() == "HOLI"){
+                document.getElementsByClassName('messageInput')[0].value= "Hola*";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "BUSCO CHICA"
+               || mensaje.toUpperCase() == "BUSCO UNA CHICA"
+               || mensaje.toUpperCase() == "BUSCO UNA MUJER"
+               || mensaje.toUpperCase().indexOf("BUSCO CHICA") > -1
+              || mensaje.toUpperCase().indexOf("BUSCO MUJER") > -1
+              || mensaje.toUpperCase().indexOf("BUSCO M") > -1
+              || mensaje.toUpperCase().indexOf("BUSCO SUMISA") > -1
+              || mensaje.toUpperCase().indexOf("BUSCO CHAT HOT CON MUJER") > -1
+              || mensaje.toUpperCase().indexOf("BUSCO UNA CHICA") > -1
+              || mensaje.toUpperCase().indexOf("BUSCO A UNA CHICA") > -1
+              || mensaje.toUpperCase().indexOf("ALGUNA CHICA") > -1
+              || mensaje.toUpperCase().indexOf("ALGUNA MUJER") > -1){
+                document.getElementsByClassName('messageInput')[0].value= "Jajajajajajajaja eeeeste men";//. Por personas como tu el shampoo tiene instrucciones";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "NO ME IMPORTA"){
+                document.getElementsByClassName('messageInput')[0].value= "Pero es importante";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "NO ME INTERESA"){
+                document.getElementsByClassName('messageInput')[0].value= "Pero es interesante";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "BUSCA TU" || mensaje.toUpperCase() == "BUSCALO TU" || mensaje.toUpperCase() == "BÚSCALO TU"){
+                document.getElementsByClassName('messageInput')[0].value= "Pero te pregunte a ti";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "ME GUSTA TU PAPA"){
+                document.getElementsByClassName('messageInput')[0].value= "Jajajajajajajajajajjaja  que gay";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HH"){
+                document.getElementsByClassName('messageInput')[0].value= "x2x2";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "MM"){
+                document.getElementsByClassName('messageInput')[0].value= "HH";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "NO SE BYE"){
+                document.getElementsByClassName('messageInput')[0].value= "Busca en Google Hola";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase().indexOf("KEVIN") > -1){
+                document.getElementsByClassName('messageInput')[0].value= "Hola Kevin";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase().indexOf("DAVID") > -1){
+                document.getElementsByClassName('messageInput')[0].value= "Yo no";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase().indexOf("ALEX") > -1){
+                document.getElementsByClassName('messageInput')[0].value= "Hola Alex";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "H HOLA"){
+                document.getElementsByClassName('messageInput')[0].value= "x2 Hola";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HOLA, H"){
+                document.getElementsByClassName('messageInput')[0].value= "Hola, x2";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase().indexOf("TU VIEJA") > -1){
+                document.getElementsByClassName('messageInput')[0].value= "Tu vieja costumbre de responder incorrecto xD";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase().indexOf("SIGUEME") > -1
+              || mensaje.toUpperCase().indexOf("SÍGUEME") > -1
+              || mensaje.toUpperCase().indexOf("SEGUIME") > -1
+              || mensaje.toUpperCase().indexOf("SÍGUENOS") > -1
+              || mensaje.toUpperCase().indexOf("SIGUENOS") > -1
+              || mensaje.toUpperCase().indexOf("SEGUINOS") > -1){
+                document.getElementsByClassName('messageInput')[0].value= "Hola pedidoras de seguidores de tontogram jaja quiero presentarles nuestra nueva radio virtual llamada MR PLAY, que te da la mejor música y te emociona, áqui puedes escuchar urbana, Reguetón, pop, electrónica rock, mexicana y mucho más, SIN ANUNCIOS NI PAUSAS!!! Para escucharla deben ingresar a zeno.fm/mr-play y darle en Listen Now y ya podrá escuchar en vivo!!! Totalmente gratis también desde la App zeno radio . Todos están invitados a escucharla!!!!!!";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HOLA G"){
+                document.getElementsByClassName('messageInput')[0].value= "Hola gay";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HOLA J"){
+                document.getElementsByClassName('messageInput')[0].value= "Hola joto jajaja";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HOLA B"){
+                document.getElementsByClassName('messageInput')[0].value= "Hola bb";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "H HOR"){
+                document.getElementsByClassName('messageInput')[0].value= "H horrible jajajaja";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "H GOT"){
+                document.getElementsByClassName('messageInput')[0].value= "H goterero";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HOLA SOY H" || mensaje.toUpperCase() == "HOLA SOY HOMBRE"){
+                document.getElementsByClassName('messageInput')[0].value= "Hola soy yo";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "nahomi_.l7"){
+                document.getElementsByClassName('messageInput')[0].value= "Hola Nahomi leonides";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase().indexOf("NEGRO") > -1){
+                document.getElementsByClassName('messageInput')[0].value= "Jajajajajajajaja eeeeeeeeeste men. El negro no se murio como tu esperabas ni tampoco dejara de joder porque un menso quiera jajajajajajajajaja. Y como soy el negro me gusta tu mama la blankita y esta noche haremos el amor y tu tendras hermanitos multicolor Jajajajajajajaja";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "H HOY"){
+                document.getElementsByClassName('messageInput')[0].value= "Y mañana m";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            /*if(mensaje != ""){
+                document.getElementsByClassName('messageInput')[0].value= mensaje;
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }*/
+
+            if(mensaje == "Activos 24/7"
+               || mensaje == "Hola me llamo Maria."
+               || mensaje == "Unete. Te espero."
+               || mensaje == "Grupo Telegram: @UnMundoDeAmistades"
+               || mensaje == "Buscas Amistades y Charlar?"){
+            document.getElementsByClassName('messageInput')[0].value= "Hola y tambien diles que el enlace a tu grupo es este https://t.me/UnMundoDeAmistadessss que unicamente se unan por hay porque hay otros grupos con el mismo nombre y se pueden confundir. RECUERDA, PASALES ESTE ENLACE Y SE TE UNIRAN MAS :D https://t.me/UnMundoDeAmistadessss";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase().indexOf("PROPENE") > -1){
+                document.getElementsByClassName('messageInput')[0].value= "Ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+
+                document.getElementsByClassName('messageInput')[0].value= "Eso es Correcto";
+            }, 9);
+
+                setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+
+                document.getElementsByClassName('messageInput')[0].value= "Ganaste";
+            }, 1000);
+
+                setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+
+                document.getElementsByClassName('messageInput')[0].value= "De donde eres?";
+            }, 2000);
+
+                setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 3000);
+            }
+
+
+        }
+            if(mensajesTotalesExtr > 0 && tamanoMensajesE == 0){
+            mensajesTotalesExtr = 0;
+            }
+
+        }catch(err){
+            //console.log(err);
+        }
+        },1);
+
+})();
