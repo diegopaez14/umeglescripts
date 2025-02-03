@@ -56,6 +56,7 @@
             var ultimoMensajeExt = mensajesExtr[tamanoMensajesE - 1];
             mensajesTotalesExtr = tamanoMensajesE;
 
+            navigator.vibrate(200);
             var mensaje = ultimoMensajeExt;
 
             //RESPUESTAS AUTOMATICAS
