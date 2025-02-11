@@ -28,7 +28,7 @@ const observerVNB = new MutationObserver(() => {
 
     // Si hay más elementos, hacer vibrar el celular
     if (cantidadActualVNB > cantidadAnteriorVNB) {
-        navigator.vibrate(200); // Vibra por 200ms
+        navigator.vibrate(250); // Vibra por 200ms
     }
 
     // Actualizar la cantidad anterior
