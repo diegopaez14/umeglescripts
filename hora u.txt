@@ -54,7 +54,10 @@
 
         if(mensajesTotalesExtr < tamanoMensajesE || mensajesTotalesExtr == 0){
             var ultimoMensajeExt = mensajesExtr[tamanoMensajesE - 1];
+setTimeout(function(){
             ultimoMensajeExt.innerHTML += "   <span style='font-size:9px; background-color:red;color:white;float:right;'>  "+horaDeMensaje+"</span>";
+}, 200);
+
             mensajesTotalesExtr = tamanoMensajesE;
         }
             if(mensajesTotalesExtr > 0 && tamanoMensajesE == 0){
