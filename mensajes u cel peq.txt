@@ -1,0 +1,174 @@
+// ==UserScript==
+// @name         Mensajes Automaticos Cel UHM PEQ
+// @namespace    http://tampermonkey.net/
+// @version      2025-01-17
+// @description  try to take over the world!
+// @author       You
+// @match        https://uhmegle.com/text/
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=uhmegle.com
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    var botonesColocados = false;
+
+    var cuerpo = document.getElementsByTagName("body")[0];
+
+    /*var add;
+    var delay = 1000;
+    function start() {
+        add = setInterval(function() {
+            try{
+                document.getElementsByClassName('chatmsg')[0].value= "Falso";
+                setTimeout(function(){
+                    var botonEnviar = document.getElementsByClassName('sendbtn')[0];
+                    botonEnviar.click();
+                }, 40);
+            }catch(err){
+                console.err("No se pudo repetir el mensaje" + err);
+            }
+        }, delay);
+    }*/
+
+    setInterval(function(){
+
+        try {
+            if(!botonesColocados){
+                var tablaMensajesEnviar = document.getElementsByClassName("controltable")[0];
+
+                var tr = document.createElement("DIV");
+                tr.setAttribute("style", "position: fixed; z-index:999999999999999999; bottom: 67px; opacity: 0.4;");
+
+                var botonMensaje1 = document.createElement("BUTTON");
+                botonMensaje1.innerHTML = "<b>CSLEP?...</b>";
+                botonMensaje1.setAttribute("class", "btnMsgAuto");
+                botonMensaje1.setAttribute("onclick", "enviarMensaje('Como se llama el Propileno segun la iupac? Quien responda correcto gana un premio')");
+                //botonMensaje1.setAttribute("onclick", "enviarMensaje('Como se llama el Propileno segun la iupac? Quien responda correcto gana doble premio por el mundial de Qatar 2022 🇶🇦⚽🏆.  #Qᵃᵗᵃʳ²⁰²²')");
+
+                var botonMensaje2 = document.createElement("BUTTON");
+                botonMensaje2.innerHTML = "NoSabes?";
+                botonMensaje2.setAttribute("class", "btnMsgAuto");
+                botonMensaje2.setAttribute("onclick", "enviarMensaje('No sabes?')");
+
+                var botonMensaje3 = document.createElement("BUTTON");
+                botonMensaje3.innerHTML = "BusEnGgle";
+                botonMensaje3.setAttribute("class", "btnMsgAuto");
+                botonMensaje3.setAttribute("onclick", "enviarMensaje('Busca en google')");
+                //botonMensaje3.style.width="98px";
+                botonMensaje3.style.fontSize="11px";
+                botonMensaje3.style.height="20px";
+
+                var botonMensaje3b = document.createElement("BUTTON");
+                botonMensaje3b.innerHTML = "ˢⁿ";
+                botonMensaje3b.setAttribute("class", "btnMsgAuto");
+                botonMensaje3b.setAttribute("onclick", "enviarMensaje('Busca en google ⁽ˢᶦⁿ ⁿᵉᵍᵃʳˢᵉ⁾')");
+                botonMensaje3b.style.width="17px";
+
+                var botonMensaje3a = document.createElement("BUTTON");
+                botonMensaje3a.innerHTML = "Como va saber?";
+                botonMensaje3a.setAttribute("class", "btnMsgAuto");
+                botonMensaje3a.setAttribute("onclick", "enviarMensaje('Y entonces como lo va a saber?')");
+
+                var botonMensaje4 = document.createElement("BUTTON");
+                botonMensaje4.innerHTML = "Jajaja";
+                botonMensaje4.setAttribute("class", "btnMsgAuto");
+                botonMensaje4.setAttribute("onclick", "enviarMensaje('Ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ja ')");
+
+                var botonMensaje5 = document.createElement("BUTTON");
+                botonMensaje5.innerHTML = "Correct";
+                botonMensaje5.setAttribute("class", "btnMsgAuto");
+                botonMensaje5.setAttribute("onclick", "enviarMensaje('Eso es Correcto')");
+
+                var botonMensaje5a = document.createElement("BUTTON");
+                botonMensaje5a.innerHTML = "Incorr";
+                botonMensaje5a.setAttribute("class", "btnMsgAuto");
+                botonMensaje5a.setAttribute("onclick", "enviarMensaje('Incorrecto')");
+
+                var botonMensaje6 = document.createElement("BUTTON");
+                botonMensaje6.innerHTML = "Ganaste";
+                botonMensaje6.setAttribute("class", "btnMsgAuto");
+                botonMensaje6.setAttribute("onclick", "enviarMensaje('Ganaste')");
+
+                var botonMensaje7 = document.createElement("BUTTON");
+                botonMensaje7.innerHTML = "GPremio";
+                botonMensaje7.setAttribute("class", "btnMsgAuto");
+                botonMensaje7.setAttribute("onclick", "enviarMensaje('Ganaste un premio')");
+
+                var botonMensajePE = document.createElement("BUTTON");
+                botonMensajePE.innerHTML = "Men P/zado";
+                botonMensajePE.setAttribute("class", "btnMsgAuto");
+                botonMensajePE.setAttribute("onclick", "enviarMensaje('Por el nombre . jajajajajaajajajasajjajajajajaj xD')");
+
+                var divRepetidor = document.createElement("DIV");
+                divRepetidor.setAttribute("style", "position: fixed; z-index:999999999999999999; bottom: 150px; right: 0; background-color: aliceblue; width:110px; height:82px; opacity:0.25; border: 1px solid #000; border-radius:3px;");
+                divRepetidor.setAttribute("onmouseover","this.style.opacity = '1';");
+                divRepetidor.setAttribute("onmouseout","this.style.opacity = '0.12';");
+                divRepetidor.innerHTML="Activar Rep:";
+
+                var checkboxActivarRep = document.createElement("INPUT");
+                checkboxActivarRep.setAttribute("type", "checkbox");
+                checkboxActivarRep.setAttribute("id", "activarRepMensajes");
+                checkboxActivarRep.setAttribute("onclick", "if(this.checked){start()}else{clearInterval(add)}");
+                //checkboxActivarRep.setAttribute("onclick", "");
+                var txtMensajeRepetir = document.createElement("INPUT");
+                txtMensajeRepetir.setAttribute("type", "search");
+                txtMensajeRepetir.setAttribute("id", "mensajeRepetir");
+                txtMensajeRepetir.setAttribute("value", "Falso");
+                txtMensajeRepetir.setAttribute("style", "width:105px;");
+
+                var inputDelay = document.createElement("INPUT");
+                inputDelay.setAttribute("type", "number");
+                inputDelay.setAttribute("id", "inputDelay");
+                inputDelay.setAttribute("min", "1");
+                inputDelay.setAttribute("value", "1");
+                inputDelay.setAttribute("placeholder", "Delay");
+                inputDelay.setAttribute("style", "width:40px; height:10px; font-size:9px;");
+
+                var btnNuevoOmegle = document.createElement("BUTTON");
+                btnNuevoOmegle.innerHTML = "Nuevo Omegle";
+                btnNuevoOmegle.setAttribute("type", "button");
+                btnNuevoOmegle.setAttribute("onclick", "window.open('https://www.omegle.com/', '_blank');");
+
+                var btnQuitarHola = document.createElement("BUTTON");
+                btnQuitarHola.innerHTML = "X Hola";
+                btnQuitarHola.setAttribute("onclick", "document.getElementById('_hola_popup_iframe__').remove();");
+                btnQuitarHola.setAttribute("style", "font-size:8px;");
+
+                divRepetidor.appendChild(checkboxActivarRep);
+                divRepetidor.appendChild(txtMensajeRepetir);
+                divRepetidor.appendChild(inputDelay);
+                divRepetidor.appendChild(btnQuitarHola);
+                divRepetidor.appendChild(btnNuevoOmegle);
+
+                cuerpo.appendChild(tr);
+                cuerpo.appendChild(divRepetidor);
+
+                tr.appendChild(botonMensaje1);
+                tr.appendChild(botonMensaje2);
+                tr.appendChild(botonMensaje3);
+                tr.appendChild(botonMensaje3b);
+                tr.appendChild(botonMensaje3a);
+                tr.appendChild(botonMensaje4);
+                tr.appendChild(botonMensaje5);
+                tr.appendChild(botonMensaje5a);
+                tr.appendChild(botonMensaje6);
+                tr.appendChild(botonMensaje7);
+
+                tr.appendChild(botonMensajePE);
+
+                botonesColocados = true;
+            }
+        }catch(err) {
+            console.log("No se mostrara los elementos debido a este error: "+ err);
+        }
+
+    }, 500);
+
+    var scripts = document.createElement("SCRIPT");
+
+    cuerpo.appendChild(scripts);
+
+    scripts.innerHTML = "function enviarMensaje(mensaje){document.getElementsByClassName('messageInput')[0].value= mensaje; setTimeout(function(){ var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton'); botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true })); }, 50);}  var add; var delay = parseInt(document.getElementById('inputDelay')); function start() { add = setInterval(function() { try{ document.getElementsByClassName('messageInput')[0].value= document.getElementById('mensajeRepetir').value; setTimeout(function(){ var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton'); botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true })); }, 40); }catch(err){ console.err('No se pudo repetir el mensaje' + err); } }, delay); }";
+})();
