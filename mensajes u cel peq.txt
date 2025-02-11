@@ -53,7 +53,7 @@
                 botonMensaje2.setAttribute("onclick", "enviarMensaje('No sabes?')");
 
                 var botonMensaje3 = document.createElement("BUTTON");
-                botonMensaje3.innerHTML = "BusEnGgle";
+                botonMensaje3.innerHTML = "BusEnGoogle";
                 botonMensaje3.setAttribute("class", "btnMsgAuto");
                 botonMensaje3.setAttribute("onclick", "enviarMensaje('Busca en google')");
                 //botonMensaje3.style.width="98px";
