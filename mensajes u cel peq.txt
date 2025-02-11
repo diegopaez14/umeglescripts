@@ -65,7 +65,7 @@
                 botonMensaje3b.setAttribute("class", "btnMsgAuto");
                 botonMensaje3b.setAttribute("onclick", "enviarMensaje('Busca en google ⁽ˢᶦⁿ ⁿᵉᵍᵃʳˢᵉ⁾')");
                 botonMensaje3b.style.width="17px";
-botonMensaje3b.style.padding="1px";
+botonMensaje3b.style.padding="initial";
 
                 var botonMensaje3a = document.createElement("BUTTON");
                 botonMensaje3a.innerHTML = "Como va saber?";
