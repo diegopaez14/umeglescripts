@@ -35,10 +35,10 @@ function verificarEstilo() {
 
                 setTimeout(function(){
                 botonDesc.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
-                }, 357);
+                }, 307);
                 setTimeout(function(){
                 botonDesc.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
-                }, 395);
+                }, 345);
             }
     }
 }
