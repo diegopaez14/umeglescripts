@@ -1,0 +1,42 @@
+// ==UserScript==
+// @name         VibrateNewMessage
+// @namespace    http://tampermonkey.net/
+// @version      2025-02-11
+// @description  try to take over the world!
+// @author       You
+// @match        https://uhmegle.com/text/
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=uhmegle.com
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+// Selecciona el contenedor de los mensajes
+var mainMessagesVNB = document.getElementById('mainMessages');
+
+// Función para contar los elementos con `span.You`
+function contarDivsYouVNB() {
+    return mainMessagesVNB.querySelectorAll('div:has(> span.You)').length;
+}
+
+// Variable para almacenar la cantidad inicial de elementos
+let cantidadAnteriorVNB = contarDivsYouVNB();
+
+// Observador de cambios en el DOM
+const observerVNB = new MutationObserver(() => {
+    let cantidadActualVNB = contarDivsYouVNB();
+
+    // Si hay más elementos, hacer vibrar el celular
+    if (cantidadActualVNB > cantidadAnteriorVNB) {
+        navigator.vibrate(200); // Vibra por 200ms
+    }
+
+    // Actualizar la cantidad anterior
+    cantidadAnteriorVNB = cantidadActualVNB;
+});
+
+// Configurar el observador para detectar cambios en los hijos del contenedor
+observerVNB.observe(mainMessagesVNB, { childList: true, subtree: true });
+
+
+})();
