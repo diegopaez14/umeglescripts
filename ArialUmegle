@@ -1,0 +1,21 @@
+// ==UserScript==
+// @name         Uhmegle Fuente Clasica Arial
+// @namespace    http://tampermonkey.net/
+// @version      2024-11-06
+// @description  try to take over the world!
+// @author       You
+// @match        https://uhmegle.com/text/
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=uhmegle.com
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    var cuerpo = document.getElementsByTagName("body")[0];
+    var estilos = document.createElement("STYLE");
+
+    cuerpo.appendChild(estilos);
+
+    estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} .youmsg, .strangermsg, .logitem{animation-name: none; animation-duration:0s ; animation-fill-mode: both;} @keyframes claves {from {transform: scale(0); opacity: 1;} to {transform: scale(1); opacity: 1;} }";
+})();
