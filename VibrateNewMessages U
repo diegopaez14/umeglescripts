@@ -16,7 +16,7 @@ var mainMessagesVNB = document.getElementById('mainMessages');
 
 // Función para contar los elementos con `span.You`
 function contarDivsYouVNB() {
-    return mainMessagesVNB.querySelectorAll('div:has(> span.You)').length;
+    return mainMessagesVNB.querySelectorAll('div:has(> span.Stranger)').length;
 }
 
 // Variable para almacenar la cantidad inicial de elementos
