@@ -18,5 +18,5 @@
 
     cuerpo.appendChild(estilos);
 
-    estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} #information { margin-top: inherit; } .youmsg, .strangermsg, .logitem{animation-name: none; animation-duration:0s ; animation-fill-mode: both;} @keyframes claves {from {transform: scale(0); opacity: 1;} to {transform: scale(1); opacity: 1;} }";
+    estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} #information { margin-top: inherit; } body{max-height: max-content;} .youmsg, .strangermsg, .logitem{animation-name: none; animation-duration:0s ; animation-fill-mode: both;} @keyframes claves {from {transform: scale(0); opacity: 1;} to {transform: scale(1); opacity: 1;} }";
 })();
