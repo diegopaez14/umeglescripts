@@ -37,7 +37,7 @@ const observerVNB = new MutationObserver(() => {
     let cantidadActualVNB = contarDivsYouVNB();
 
     if (cantidadActualVNB > cantidadAnteriorVNB) {
-        navigator.vibrate(200); // Vibra por 200ms
+        navigator.vibrate(250); // Vibra por 200ms
     }
 
     cantidadAnteriorVNB = cantidadActualVNB;
