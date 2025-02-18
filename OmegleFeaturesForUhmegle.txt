@@ -1,0 +1,80 @@
+// ==UserScript==
+// @name         Omegle Features In Uhmegle
+// @namespace    http://tampermonkey.net/
+// @version      2025-02-18
+// @description  try to take over the world!
+// @author       You
+// @match        https://uhmegle.com/text/
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    var cuerpo = document.getElementsByTagName("body")[0];
+    var estilos = document.createElement("STYLE");
+
+    cuerpo.appendChild(estilos);
+
+    //1) Estilos originales de Omegle (Fuente Arial, Separacion etre mensajes, Ajuste de pagina sin scroll y ocupando el alto de pantalla)
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || navigator.maxTouchPoints > 0) {//Celulares o tablets
+        estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} .chatWindow div{padding-bottom: .5em; display: block;} #information{ margin-top: initial; font-size:.9em}";
+    } else {//PC - Mac - Linux
+        estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} .chatWindow div{padding-bottom: .5em; display: block;} #information{ margin-top: initial; font-size:.9em} body, html{min-height:94vh}";
+    }
+
+    //2) VIBRACION AL RECIBIR NUEVO MENSAJE DEL DESCONOCIDO
+var mainMessagesVNB = document.getElementById('mainMessages');
+
+function contarDivsYouVNB() {
+    return mainMessagesVNB.querySelectorAll('div:has(> span.Stranger)').length;
+}
+
+let cantidadAnteriorVNB = contarDivsYouVNB();
+
+const observerVNB = new MutationObserver(() => {
+    let cantidadActualVNB = contarDivsYouVNB();
+
+    if (cantidadActualVNB > cantidadAnteriorVNB) {
+        navigator.vibrate(200); // Vibra por 200ms
+    }
+
+    cantidadAnteriorVNB = cantidadActualVNB;
+});
+
+observerVNB.observe(mainMessagesVNB, { childList: true, subtree: true });
+
+    //3) COMPORTAMIENTO DEL CUADRO DE MENSAJE A ENVIAR (INHABILITARSE CUANDO EL DESCONOCIDO SE DESCONECTA O TU DESCONECTAS EL CHAT)
+    var textoDelBotonDCM = document.querySelector('.bottomButton.outlined.skipButton').getElementsByClassName("mainText")[0];
+var chatmsgDCM = document.getElementsByClassName('messageInput')[0];
+
+// Creamos el MutationObserver
+const observerDCM = new MutationObserver((mutationsListDCM) => {
+  for (const mutationDCM of mutationsListDCM) {
+    if (mutationDCM.type === 'characterData' || mutationDCM.type === 'childList') {
+      // console.log('El texto o contenido cambió:', textoDelBotonDCM.textContent);
+      if (textoDelBotonDCM.textContent === "New..." || textoDelBotonDCM.textContent === "Start") {
+        chatmsgDCM.disabled = true;
+      } else {
+        chatmsgDCM.disabled = false;
+        chatmsgDCM.focus();
+        if (textoDelBotonDCM.textContent === "Stop") {
+          chatmsgDCM.value = "";
+        }
+      }
+    }
+  }
+});
+
+// Configuramos qué queremos observar (en este caso, cambios en el texto o hijos del nodo)
+const configDCM = {
+  characterData: true, // Cambios en nodos de texto
+  childList: true, // Cambios en los nodos hijos
+  subtree: true,   // Observar también los descendientes
+};
+
+// Iniciamos el observer en el elemento seleccionado
+observerDCM.observe(textoDelBotonDCM, configDCM);
+
+})();
