@@ -5,7 +5,7 @@
 // @description  try to take over the world!
 // @author       You
 // @match        https://uhmegle.com/text/
-// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=uhmegle.com
 // @grant        none
 // ==/UserScript==
 
@@ -62,6 +62,9 @@ const observerDCM = new MutationObserver((mutationsListDCM) => {
         if (textoDelBotonDCM.textContent === "Stop") {
           chatmsgDCM.value = "";
         }
+          if(document.getElementById("divFinalChatBSOC")){
+          document.getElementById("divFinalChatBSOC").remove();
+          }
       }
     }
   }
@@ -76,5 +79,298 @@ const configDCM = {
 
 // Iniciamos el observer en el elemento seleccionado
 observerDCM.observe(textoDelBotonDCM, configDCM);
+
+
+    //4) Filtro de idioma (solo conectar con personas de tu idioma, si no lo son los pasa)
+    var openboost = document.getElementsByClassName("openBoost")[0];
+    //openboost.style.backgroundColor="orange";
+
+    // Lista de idiomas con sus valores
+const languagesLANG = [
+    { valueLANG: 0, textLANG: "All languages", countriesLANG: [""] },
+    { valueLANG: 1, textLANG: "English", countriesLANG: ["US", "GB", "CA", "AU"] },
+    { valueLANG: 2, textLANG: "Spanish", countriesLANG: ["ES", "MX", "AR", "CO"] },
+    { valueLANG: 3, textLANG: "Portuguese", countriesLANG: ["BR", "PT"] },
+    { valueLANG: 4, textLANG: "French", countriesLANG: ["FR", "CA", "BE"] },
+    { valueLANG: 5, textLANG: "Hindi", countriesLANG: ["IN"] },
+    { valueLANG: 6, textLANG: "Arabic", countriesLANG: ["SA", "EG", "AE"] },
+    { valueLANG: 7, textLANG: "Russian", countriesLANG: ["RU", "BY", "KZ"] },
+    { valueLANG: 8, textLANG: "German", countriesLANG: ["DE", "AT", "CH"] },
+    { valueLANG: 9, textLANG: "Italian", countriesLANG: ["IT", "CH"] },
+    { valueLANG: 10, textLANG: "Turkish", countriesLANG: ["TR"] },
+    { valueLANG: 11, textLANG: "Chinese", countriesLANG: ["CN", "TW", "SG"] },
+    { valueLANG: 12, textLANG: "Japanese", countriesLANG: ["JP"] }
+];
+
+// Crear el elemento <select>
+const selectLANG = document.createElement("select");
+selectLANG.id = "languagesLANG";
+    selectLANG.title = "By selecting the language it will only connect you with countries that speak the language you selected";
+
+// Generar opciones dinámicamente
+languagesLANG.forEach(languageLANG => {
+    const optionLANG = document.createElement("option");
+    optionLANG.value = languageLANG.valueLANG;
+    optionLANG.textContent = languageLANG.textLANG;
+    selectLANG.appendChild(optionLANG);
+});
+
+// Agregar el select al cuerpo del documento
+openboost.appendChild(selectLANG);
+
+    // Obtener país del usuario mediante la API de geolocalización
+fetch("https://ipapi.co/json/")
+    .then(responseLANG => responseLANG.json())
+    .then(dataLANG => {
+        const userCountryLANG = dataLANG.country_code; // Código de país (ej: "US", "ES")
+        console.log("País detectado:", userCountryLANG);
+
+        // Buscar el idioma correspondiente al país detectado
+        const matchedLanguageLANG = languagesLANG.find(langLANG =>
+            langLANG.countriesLANG.includes(userCountryLANG)
+        );
+
+        // Si se encuentra un idioma, seleccionarlo en el <select>
+        if (matchedLanguageLANG) {
+            selectLANG.value = matchedLanguageLANG.valueLANG;
+        }
+    })
+    .catch(errorLANG => console.error("Error al obtener la ubicación:", errorLANG));
+
+
+    const elementoCLA = document.querySelector('.countryInfo');
+const paisCLA = document.getElementById('countryName');
+
+var spanishSpeakingCountriesCLA = [
+    "ARGENTINA", "BOLIVIA", "CHILE", "COLOMBIA", "COSTA RICA",
+    "CUBA", "ECUADOR", "EL SALVADOR", "SPAIN", "GUATEMALA",
+    "HONDURAS", "MEXICO", "NICARAGUA", "PANAMA", "PARAGUAY",
+    "PERU", "DOMINICAN REPUBLIC", "URUGUAY", "VENEZUELA", "EQUATORIAL GUINEA"
+];
+
+// Función para verificar el estilo
+function verificarEstiloCLA() {
+    if (elementoCLA.style.display === 'flex') {
+        //console.log('El elemento con clase countryInfo se ha mostrado como flex');
+        // Aquí va tu código a ejecutar cuando se muestre
+        //alert(selectLANG.value);
+        if(selectLANG.value === "1"){//English
+        spanishSpeakingCountriesCLA= [
+    "UNITED STATES", "UNITED KINGDOM", "CANADA", "AUSTRALIA", "IRELAND",
+    "NEW ZEALAND", "SOUTH AFRICA", "JAMAICA", "TRINIDAD AND TOBAGO",
+    "BARBADOS", "BAHAMAS", "GUYANA", "BELIZE", "GRENADA", "SAINT LUCIA",
+    "SAINT VINCENT AND THE GRENADINES", "ANTIGUA AND BARBUDA",
+    "SAINT KITTS AND NEVIS", "FIJI", "PAPUA NEW GUINEA", "NIGERIA",
+    "GHANA", "KENYA", "UGANDA", "ZAMBIA", "ZIMBABWE", "MALTA"];
+        }
+
+        if(selectLANG.value === "2"){//Español
+            spanishSpeakingCountriesCLA= ["ARGENTINA", "BOLIVIA", "CHILE", "COLOMBIA", "COSTA RICA",
+    "CUBA", "ECUADOR", "EL SALVADOR", "SPAIN", "GUATEMALA",
+    "HONDURAS", "MEXICO", "NICARAGUA", "PANAMA", "PARAGUAY",
+    "PERU", "DOMINICAN REPUBLIC", "URUGUAY", "VENEZUELA", "EQUATORIAL GUINEA"];
+        }
+
+        if(selectLANG.value === "3"){//Portugues
+            spanishSpeakingCountriesCLA= ["PORTUGAL", "BRAZIL", "ANGOLA", "MOZAMBIQUE", "GUINEA-BISSAU",
+    "EQUATORIAL GUINEA", "EAST TIMOR", "CAPE VERDE", "SAO TOME AND PRINCIPE"];
+        }
+
+        if(selectLANG.value === "4"){//Frances
+            spanishSpeakingCountriesCLA= ["FRANCE", "CANADA", "BELGIUM", "SWITZERLAND", "LUXEMBOURG",
+    "MONACO", "DEMOCRATIC REPUBLIC OF THE CONGO", "IVORY COAST", "SENEGAL",
+    "CAMEROON", "MADAGASCAR", "BURKINA FASO", "NIGER", "MALI",
+    "TOGO", "GABON", "CENTRAL AFRICAN REPUBLIC", "CHAD", "DJIBOUTI",
+    "COMOROS", "SEYCHELLES", "GUINEA", "BENIN", "RWANDA", "BURUNDI"];
+        }
+
+        if(selectLANG.value === "5"){//Hindi
+            spanishSpeakingCountriesCLA= ["INDIA", "NEPAL", "FIJI", "MAURITIUS", "SURINAME",
+    "GUYANA", "TRINIDAD AND TOBAGO"];
+        }
+
+        if(selectLANG.value === "6"){//Arabic
+            spanishSpeakingCountriesCLA= ["SAUDI ARABIA", "UNITED ARAB EMIRATES", "EGYPT", "IRAQ", "JORDAN",
+    "KUWAIT", "LEBANON", "LIBYA", "MOROCCO", "OMAN", "QATAR", "SYRIA",
+    "TUNISIA", "YEMEN", "BAHRAIN", "ALGERIA", "SUDAN", "MAURITANIA",
+    "DJIBOUTI", "COMOROS", "PALESTINE"];
+        }
+
+        if(selectLANG.value === "7"){//Ruso
+            spanishSpeakingCountriesCLA= ["RUSSIA", "BELARUS", "KAZAKHSTAN", "KYRGYZSTAN", "TAJIKISTAN",
+    "UZBEKISTAN", "TURKMENISTAN", "UKRAINE", "MOLDOVA", "LATVIA",
+    "LITHUANIA", "ESTONIA", "GEORGIA", "ARMENIA", "AZERBAIJAN"];
+        }
+
+        if(selectLANG.value === "8"){//Aleman
+            spanishSpeakingCountriesCLA= ["GERMANY", "AUSTRIA", "SWITZERLAND", "BELGIUM", "LUXEMBOURG",
+    "LIECHTENSTEIN", "ITALY"];
+        }
+
+        if(selectLANG.value === "9"){//Italiano
+            spanishSpeakingCountriesCLA= ["ITALY", "SWITZERLAND", "SAN MARINO", "VATICAN CITY", "SLOVENIA", "CROATIA"];
+        }
+
+        if(selectLANG.value === "10"){//Turco
+            spanishSpeakingCountriesCLA= ["TURKEY", "CYPRUS", "AZERBAIJAN", "BULGARIA", "GREECE", "KOSOVO",
+    "NORTH MACEDONIA", "ROMANIA", "IRAQ", "SYRIA"];
+        }
+
+        if(selectLANG.value === "10"){//Chino
+            spanishSpeakingCountriesCLA= ["CHINA", "TAIWAN", "SINGAPORE", "MALAYSIA", "HONG KONG", "MACAU"];
+        }
+
+        if(selectLANG.value === "10"){//Japones
+            spanishSpeakingCountriesCLA= ["JAPAN", "PALAU", "BRAZIL", "UNITED STATES", "PHILIPPINES"];
+        }
+
+        if (spanishSpeakingCountriesCLA.includes(paisCLA.textContent.toUpperCase()) || selectLANG.value === "0") {
+            //console.log("Es de LATAM");
+        } else {
+            //console.log("Es de otro continente");
+            var botonDescCLA = document.querySelector('.bottomButton.outlined.skipButton');
+
+            setTimeout(function () {
+                botonDescCLA.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 287);
+            setTimeout(function () {
+                botonDescCLA.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 325);
+        }
+    }
+}
+
+// Crear un MutationObserver
+const observerCLA = new MutationObserver(mutationsListCLA => {
+    for (const mutationCLA of mutationsListCLA) {
+        if (mutationCLA.type === 'attributes' && mutationCLA.attributeName === 'style') {
+            verificarEstiloCLA();
+        }
+    }
+});
+
+// Configurar el observador para observar cambios en el estilo del elemento
+observerCLA.observe(elementoCLA, { attributes: true });
+
+    //6) Guardar el chat
+
+    let scriptBlockSTC = document.createElement("script");
+    scriptBlockSTC.type = "text/javascript";
+    scriptBlockSTC.textContent = `
+        function exportarTextoComoJPGSTC() {
+            let divSTC = document.getElementsByClassName("chatWindow")[0];
+
+            if (!divSTC) {
+                console.error("No se encontró el chat.");
+                return;
+            }
+
+            // Ajustar el div para capturar todo el contenido
+            let prevOverflowSTC = divSTC.style.overflow;
+            let prevHeightSTC = divSTC.style.height;
+
+            divSTC.style.overflow = "visible";
+            divSTC.style.height = divSTC.scrollHeight + "px";
+
+            // Cargar html2canvas si no está presente
+            if (typeof html2canvas === "undefined") {
+                let scriptSTC = document.createElement("script");
+                scriptSTC.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+                scriptSTC.onload = () => convertirChatAImagenSTC(divSTC, prevOverflowSTC, prevHeightSTC);
+                document.body.appendChild(scriptSTC);
+            } else {
+                convertirChatAImagenSTC(divSTC, prevOverflowSTC, prevHeightSTC);
+            }
+        }
+
+        function convertirChatAImagenSTC(divSTC, prevOverflowSTC, prevHeightSTC) {
+            html2canvas(divSTC, {
+                backgroundColor: "#fff", // Fondo blanco
+                useCORS: true, // Evitar problemas con imágenes externas
+                scrollX: 0, // Evita capturar el desplazamiento horizontal
+                scrollY: 0, // Evita capturar el desplazamiento vertical
+                windowWidth: divSTC.scrollWidth, // Captura el ancho completo
+                windowHeight: divSTC.scrollHeight, // Captura toda la altura
+                scale: 2, // Aumenta la calidad de la imagen
+            }).then(canvasSTC => {
+                // Restaurar el estilo original del div
+                divSTC.style.overflow = prevOverflowSTC;
+                divSTC.style.height = prevHeightSTC;
+
+                let imagenSTC = canvasSTC.toDataURL("image/jpeg", 0.9);
+                let enlaceSTC = document.createElement("a");
+                enlaceSTC.href = imagenSTC;
+
+                let ahoraSTC = new Date();
+
+    let añoSTC = ahoraSTC.getFullYear();
+    let mesSTC = String(ahoraSTC.getMonth() + 1).padStart(2, '0'); // Se suma 1 porque enero es 0
+    let diaSTC = String(ahoraSTC.getDate()).padStart(2, '0');
+    let horaSTC = String(ahoraSTC.getHours()).padStart(2, '0');
+    let minutosSTC = String(ahoraSTC.getMinutes()).padStart(2, '0');
+    let segundosSTC = String(ahoraSTC.getSeconds()).padStart(2, '0');
+
+                enlaceSTC.download = "uhmeglechat"+añoSTC+mesSTC+diaSTC+horaSTC+minutosSTC+segundosSTC+".jpg";
+                enlaceSTC.click();
+            });
+        }
+    `;
+    document.body.appendChild(scriptBlockSTC);
+
+    // Función para verificar si el mensaje cumple las condiciones
+function verificarDesconexionBSOC() {
+    let elementosInfoBSOC = document.querySelectorAll('.information');
+
+    elementosInfoBSOC.forEach(elementoBSOC => {
+        let textoBSOC = elementoBSOC.textContent.trim();
+
+        if (
+            textoBSOC === "Stranger has disconnected" ||
+            textoBSOC === "You have disconnected" ||
+            textoBSOC.includes("Technical error")
+        ) {
+            if (!document.getElementById("divFinalChatBSOC")) {
+                let chatWindowBSOC = document.getElementsByClassName("chatWindow")[0];
+
+                let divFinalChatBSOC = document.createElement("div");
+                divFinalChatBSOC.setAttribute("id", "divFinalChatBSOC"); // ID único para evitar duplicados
+
+                let enlaceDescargaChatBSOC = document.createElement("a");
+                enlaceDescargaChatBSOC.innerHTML = "New chat";
+                enlaceDescargaChatBSOC.setAttribute("href", "#");
+                enlaceDescargaChatBSOC.setAttribute("onclick", "document.querySelector('.bottomButton.outlined.skipButton').dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true })); return false;");
+                enlaceDescargaChatBSOC.style.borderRadius = "5px";
+                enlaceDescargaChatBSOC.style.background = "linear-gradient(to top, #0180fe, #80bfff)";
+                enlaceDescargaChatBSOC.style.padding = "11px 35px";
+                enlaceDescargaChatBSOC.style.color = "#fff";
+                enlaceDescargaChatBSOC.style.textDecoration = "none";
+                enlaceDescargaChatBSOC.style.fontSize = "24px";
+                enlaceDescargaChatBSOC.style.cursor = "pointer";
+
+                chatWindowBSOC.appendChild(divFinalChatBSOC);
+                divFinalChatBSOC.appendChild(enlaceDescargaChatBSOC);
+
+
+                console.log(divFinalChatBSOC);
+            }
+        }
+    });
+}
+
+// Observador de cambios en el DOM
+const observerBSOC = new MutationObserver(mutationsBSOC => {
+    mutationsBSOC.forEach(mutationBSOC => {
+        if (mutationBSOC.type === 'childList' || mutationBSOC.type === 'subtree') {
+            verificarDesconexionBSOC();
+        }
+    });
+});
+
+// Configurar el observador para detectar cambios en todo el documento
+observerBSOC.observe(document.body, { childList: true, subtree: true });
+
+// Ejecutar una vez al inicio
+verificarDesconexionBSOC();
+
 
 })();
