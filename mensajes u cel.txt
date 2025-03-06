@@ -97,7 +97,7 @@
                 botonMensaje7.setAttribute("onclick", "enviarMensaje('Ganaste un premio')");
 
                 var botonMensajePE = document.createElement("BUTTON");
-                botonMensajePE.innerHTML = "Mensaje P/zado";
+                botonMensajePE.innerHTML = "Msj P/zado";
                 botonMensajePE.setAttribute("class", "btnMsgAuto");
                 botonMensajePE.setAttribute("onclick", "enviarMensaje('Por el nombre . jajajajajaajajajasajjajajajajaj xD')");
 
