@@ -116,7 +116,7 @@ languagesLANG.forEach(languageLANG => {
 });
 
 // Agregar el select al cuerpo del documento
-openboost.appendChild(selectLANG);
+openboost.prepend(selectLANG);
 
     // Obtener país del usuario mediante la API de geolocalización
 fetch("https://ipapi.co/json/")
@@ -132,7 +132,8 @@ fetch("https://ipapi.co/json/")
 
         // Si se encuentra un idioma, seleccionarlo en el <select>
         if (matchedLanguageLANG) {
-            selectLANG.value = matchedLanguageLANG.valueLANG;
+            //selectLANG.value = matchedLanguageLANG.valueLANG;
+selectLANG.selectedIndex = matchedLanguageLANG.valueLANG;
         }
     })
     .catch(errorLANG => console.error("Error al obtener la ubicación:", errorLANG));
