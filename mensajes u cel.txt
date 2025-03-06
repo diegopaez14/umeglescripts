@@ -44,7 +44,7 @@
                 var botonMensaje1 = document.createElement("BUTTON");
                 botonMensaje1.innerHTML = "<b>ComoSeLlamaElProp?...</b>";
                 botonMensaje1.setAttribute("class", "btnMsgAuto");
-                botonMensaje1.setAttribute("onclick", "enviarMensaje('Como se llama el Propileno segun la iupac? Quien responda correcto gana un premio')");
+                botonMensaje1.setAttribute("onclick", "enviarMensaje('Como se llama el Propileno segun la iupac? Quien responda correcto gana doble premio por nuestro CUARTO ANIVERSARIO 🎂🎂🎂')");
                 //botonMensaje1.setAttribute("onclick", "enviarMensaje('Como se llama el Propileno segun la iupac? Quien responda correcto gana doble premio por el mundial de Qatar 2022 🇶🇦⚽🏆.  #Qᵃᵗᵃʳ²⁰²²')");
 
                 var botonMensaje2 = document.createElement("BUTTON");
@@ -53,7 +53,7 @@
                 botonMensaje2.setAttribute("onclick", "enviarMensaje('No sabes?')");
 
                 var botonMensaje3 = document.createElement("BUTTON");
-                botonMensaje3.innerHTML = "Busca En Google";
+                botonMensaje3.innerHTML = "Busca en google";
                 botonMensaje3.setAttribute("class", "btnMsgAuto");
                 botonMensaje3.setAttribute("onclick", "enviarMensaje('Busca en google')");
                 //botonMensaje3.style.width="98px";
