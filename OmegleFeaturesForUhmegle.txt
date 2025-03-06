@@ -82,7 +82,7 @@ observerDCM.observe(textoDelBotonDCM, configDCM);
 
 
     //4) Filtro de idioma (solo conectar con personas de tu idioma, si no lo son los pasa)
-    var openboost = document.getElementsByClassName("switch ")[0];
+    var openboost = document.getElementsByClassName("rightSide")[0];
     //openboost.style.backgroundColor="orange";
 
     // Lista de idiomas con sus valores
@@ -133,6 +133,7 @@ fetch("https://ipapi.co/json/")
         // Si se encuentra un idioma, seleccionarlo en el <select>
         if (matchedLanguageLANG) {
             //selectLANG.value = matchedLanguageLANG.valueLANG;
+alert(matchedLanguageLANG.valueLANG);
 selectLANG.selectedIndex = matchedLanguageLANG.valueLANG;
         }
     })
