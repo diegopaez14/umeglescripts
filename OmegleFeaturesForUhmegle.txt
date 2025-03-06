@@ -82,7 +82,7 @@ observerDCM.observe(textoDelBotonDCM, configDCM);
 
 
     //4) Filtro de idioma (solo conectar con personas de tu idioma, si no lo son los pasa)
-    var openboost = document.getElementsByClassName("openBoost")[0];
+    var openboost = document.getElementsByClassName("switch ")[0];
     //openboost.style.backgroundColor="orange";
 
     // Lista de idiomas con sus valores
