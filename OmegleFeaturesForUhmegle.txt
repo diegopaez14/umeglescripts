@@ -133,7 +133,6 @@ fetch("https://ipapi.co/json/")
         // Si se encuentra un idioma, seleccionarlo en el <select>
         if (matchedLanguageLANG) {
             //selectLANG.value = matchedLanguageLANG.valueLANG;
-alert(matchedLanguageLANG.valueLANG);
 selectLANG.selectedIndex = matchedLanguageLANG.valueLANG;
         }
     })
