@@ -506,8 +506,13 @@
             }, 9);
             }
 
-            if(mensaje.toUpperCase().indexOf("MONITO CILINDRERO") > -1 || mensaje.toUpperCase().indexOf("MONITO CILINDRELO") > -1){
-            document.getElementsByClassName('messageInput')[0].value= "Como se llama el Propileno segun la iupac? Quien responda correcto gana un premio";
+            if(mensaje.toUpperCase().indexOf("MONITO CILINDRERO") > -1 || mensaje.toUpperCase().indexOf("MONITO CILINDRELO") > -1
+              //28/02/2025
+               || (mensaje.toUpperCase().indexOf("MONITO") > -1 && mensaje.toUpperCase().indexOf("CILINDRERO") > -1)
+              ){
+            //document.getElementsByClassName('messageInput')[0].value= "Como se llama el Propileno segun la iupac? Quien responda correcto gana un premio";
+                //28/02/2025
+                document.getElementsByClassName('messageInput')[0].value= "Jajajajajajajaja eeeeeeeeeste men. El monito no se quedo como tu esperabas ni tampoco dejara de joder porque un menso quiera jajajajajajajajaja. Me parezco a Donkey Kong entonces si si soy un monito cilindrero, o barrilero xD. Y como soy el mono Donkey Kong me gusta tu mama la Monita y esta noche haremos el amor y tu tendras hermanitos multiespecie Jajajajajajajaja";
                 setTimeout(function(){
                 var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
                 botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
