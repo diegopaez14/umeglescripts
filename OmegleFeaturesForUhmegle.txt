@@ -37,6 +37,7 @@ const observerVNB = new MutationObserver(() => {
     let cantidadActualVNB = contarDivsYouVNB();
 
     if (cantidadActualVNB > cantidadAnteriorVNB) {
+        //startTitleAnimationCTP();
         navigator.vibrate(250); // Vibra por 200ms
     }
 
@@ -335,6 +336,7 @@ function verificarDesconexionBSOC() {
 
                 let divFinalChatBSOC = document.createElement("div");
                 divFinalChatBSOC.setAttribute("id", "divFinalChatBSOC"); // ID único para evitar duplicados
+                divFinalChatBSOC.setAttribute("class", "information");
 
                 let enlaceDescargaChatBSOC = document.createElement("a");
                 enlaceDescargaChatBSOC.innerHTML = "New chat";
@@ -342,17 +344,41 @@ function verificarDesconexionBSOC() {
                 enlaceDescargaChatBSOC.setAttribute("onclick", "document.querySelector('.bottomButton.outlined.skipButton').dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true })); return false;");
                 enlaceDescargaChatBSOC.style.borderRadius = "5px";
                 enlaceDescargaChatBSOC.style.background = "linear-gradient(to top, #0180fe, #80bfff)";
-                enlaceDescargaChatBSOC.style.padding = "11px 35px";
+                enlaceDescargaChatBSOC.style.padding = "11px 32.5px";
                 enlaceDescargaChatBSOC.style.color = "#fff";
                 enlaceDescargaChatBSOC.style.textDecoration = "none";
                 enlaceDescargaChatBSOC.style.fontSize = "24px";
+                enlaceDescargaChatBSOC.style.fontFamily = "monospace";
+                enlaceDescargaChatBSOC.style.fontWeight = "100";
                 enlaceDescargaChatBSOC.style.cursor = "pointer";
 
                 chatWindowBSOC.appendChild(divFinalChatBSOC);
                 divFinalChatBSOC.appendChild(enlaceDescargaChatBSOC);
 
+                divFinalChatBSOC.innerHTML += " or ";
 
-                console.log(divFinalChatBSOC);
+                var enlaceCambioModo = document.createElement("a");
+                var hrefCambio = "", innerCambio = "";
+                if (window.location.href === "https://uhmegle.com/video/" || window.location.href === "https://uhmegle.com/video/#") {
+                    hrefCambio = "https://uhmegle.com/text/";
+                    innerCambio = "turn on text";
+                } else if (window.location.href === "https://uhmegle.com/text/" || window.location.href === "https://uhmegle.com/text/#") {
+                    hrefCambio = "https://uhmegle.com/video/";
+                    innerCambio = "turn on video";
+                }
+                enlaceCambioModo.setAttribute("href", hrefCambio);
+                enlaceCambioModo.innerHTML = innerCambio;
+                divFinalChatBSOC.appendChild(enlaceCambioModo);
+
+                var menxajesExtrFinal = contarDivsYouVNB();
+
+                if(menxajesExtrFinal > 0){
+                divFinalChatBSOC.innerHTML += "<br/><br/><br/>";
+                divFinalChatBSOC.innerHTML += "<label style='background-color:#ed8f36; border-radius:5px; padding: 2px 5px;'>Great chat?</label> Save the log: <a href='#' onclick='exportarTextoComoJPGSTC();' style='cursor:pointer;'>Get an image</a>";
+                }
+
+                var ventanaFinalDelChat = document.getElementsByClassName("chatWindow")[0];
+                ventanaFinalDelChat.scrollTop = ventanaFinalDelChat.scrollHeight;
             }
         }
     });
@@ -373,5 +399,26 @@ observerBSOC.observe(document.body, { childList: true, subtree: true });
 // Ejecutar una vez al inicio
 verificarDesconexionBSOC();
 
+// 7) Animacion en el titulo al llegar un nuevo mensaje (SE EJECUTA CUANDO RECIBE UN NUEVO MENSAJE DE STRANGER)
+
+    let originalTitleCTP = "Uhmegle"; // Guardar el título original
+let toggleCharCTP = true; // Controlador de alternancia
+let animationIntervalCTP; // Variable para almacenar el intervalo
+
+function startTitleAnimationCTP() {
+    animationIntervalCTP = setInterval(() => {
+        document.title = `${toggleCharCTP ? "___" : "¯¯¯"}${originalTitleCTP}${toggleCharCTP ? "___" : "¯¯¯"}`;
+        toggleCharCTP = !toggleCharCTP; // Alternar entre "_" y "¯"
+    }, 500);
+}
+
+// Restaurar el título y detener la animación al mover el mouse
+document.addEventListener("mousemove", () => {
+    clearInterval(animationIntervalCTP);
+    document.title = originalTitleCTP;
+
+    // Volver a iniciar la animación después de 3 segundos de inactividad
+    //setTimeout(startTitleAnimationCTP, 3000);
+});
 
 })();
