@@ -138,7 +138,7 @@
             document.getElementsByClassName('messageInput')[0].value= "Hola";
             setTimeout(function(){
                 var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
-                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: false }));
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
             }, 9);
             }
 
@@ -618,7 +618,8 @@
               || mensaje.toUpperCase().indexOf("BUSCO UNA CHICA") > -1
               || mensaje.toUpperCase().indexOf("BUSCO A UNA CHICA") > -1
               || mensaje.toUpperCase().indexOf("ALGUNA CHICA") > -1
-              || mensaje.toUpperCase().indexOf("ALGUNA MUJER") > -1){
+              || mensaje.toUpperCase().indexOf("ALGUNA MUJER") > -1
+              || mensaje.toUpperCase().indexOf("BUSCO NIÑA") > -1/*25/03/2025*/){
                 document.getElementsByClassName('messageInput')[0].value= "Jajajajajajajaja eeeeste men";//. Por personas como tu el shampoo tiene instrucciones";
             setTimeout(function(){
                 var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
@@ -862,6 +863,22 @@
                 var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
                 botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
             }, 3000);
+            }
+
+            if(mensaje.toUpperCase() == "HOLAA H"){//20/03/2025
+                document.getElementsByClassName('messageInput')[0].value= "Holaa x2";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "Holaa H17"){//21/03/2025
+                document.getElementsByClassName('messageInput')[0].value= "Holaa H27";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
             }
 
 
