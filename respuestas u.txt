@@ -535,7 +535,7 @@
             }, 9);
             }
 
-            if(mensaje == "Quieres ver mi pene"){
+            if(mensaje == "Quieres ver mi pene" || mensaje == "Quieres ver mi pene?"/*11/04/2024*/){
             document.getElementsByClassName('messageInput')[0].value= "Jajajajajajajajajaja eeeeeeste men. . Como se llama el Propileno segun la iupac? Quien responda correcto gana un premio";
             setTimeout(function(){
                 var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
@@ -875,6 +875,23 @@
 
             if(mensaje == "Holaa H17"){//21/03/2025
                 document.getElementsByClassName('messageInput')[0].value= "Holaa H27";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "TE VUELVO A PASAR" || mensaje.toUpperCase() == "TE VOLVERE A PASAR" || mensaje.toUpperCase() == "TE PASO OTRA VEZ"
+              || mensaje.toUpperCase().indexOf("TE VUELVO A PASAR") > -1 || mensaje.toUpperCase().indexOf("TE VOLVERE A PASAR") > -1 || mensaje.toUpperCase().indexOf("TE PASO OTRA VEZ") > -1){//7/04/2025 - 11/04/2025
+                document.getElementsByClassName('messageInput')[0].value= "Y la respuesta?";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje.toUpperCase() == "HOLA, H."){//7/04/2025
+                document.getElementsByClassName('messageInput')[0].value= "Hola, x2.";
             setTimeout(function(){
                 var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
                 botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
