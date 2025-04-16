@@ -19,7 +19,7 @@
 
     //1) Estilos originales de Omegle (Fuente Arial, Separacion etre mensajes, Ajuste de pagina sin scroll y ocupando el alto de pantalla)
     if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || navigator.maxTouchPoints > 0) {//Celulares o tablets
-        estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} .chatWindow div{padding-bottom: .5em; display: block; animation-name: none; animation-duration:0s ; animation-fill-mode: both; } #information{ margin-top: initial; } .information{font-size:.9em} body, html{min-height:94vh}  @keyframes claves {from {/*transform: scale(0);*/ opacity: 0;} to {/*transform: scale(1);*/ opacity: 1;} }";
+        estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} .chatWindow div{padding-bottom: .5em; display: block; animation-name: none; animation-duration:0s ; animation-fill-mode: both; } #information{ margin-top: initial; } .information{font-size:.9em} body, html{min-height:93vh}  @keyframes claves {from {/*transform: scale(0);*/ opacity: 0;} to {/*transform: scale(1);*/ opacity: 1;} }";
     } else {//PC - Mac - Linux
         estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} .chatWindow div{padding-bottom: .5em; display: block; animation-name: none; animation-duration:0s ; animation-fill-mode: both;} #information{ margin-top: initial; } .information{font-size:.9em} @keyframes claves {from {/*transform: scale(0);*/ opacity: 0;} to {/*transform: scale(1);*/ opacity: 1;} }";
     }
