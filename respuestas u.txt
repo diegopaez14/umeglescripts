@@ -599,7 +599,7 @@
             }, 9);
             }
 
-            if(mensaje.toUpperCase() == "HILA" || mensaje.toUpperCase() == "HOA" || mensaje.toUpperCase() == "HOAL" || mensaje.toUpperCase() == "HOLW" || mensaje.toUpperCase() == "HOÑA" || mensaje.toUpperCase() == "HOL" || mensaje.toUpperCase() == "HOMA" || mensaje.toUpperCase() == "HOKA" || mensaje.toUpperCase() == "OLA" || mensaje.toUpperCase() == "HOLS" || mensaje.toUpperCase() == "HOLI"){
+            if(mensaje.toUpperCase() == "HILA" || mensaje.toUpperCase() == "HOA" || mensaje.toUpperCase() == "HOAL" || mensaje.toUpperCase() == "HOLW" || mensaje.toUpperCase() == "HOÑA" || mensaje.toUpperCase() == "HOL" || mensaje.toUpperCase() == "HOMA" || mensaje.toUpperCase() == "HOKA" || mensaje.toUpperCase() == "OLA" || mensaje.toUpperCase() == "HOLS" || mensaje.toUpperCase() == "HOLI" || mensaje.toUpperCase() == "HOLQ"/*06/05/2025*/){
                 document.getElementsByClassName('messageInput')[0].value= "Hola*";
             setTimeout(function(){
                 var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
@@ -892,6 +892,14 @@
 
             if(mensaje.toUpperCase() == "HOLA, H."){//7/04/2025
                 document.getElementsByClassName('messageInput')[0].value= "Hola, x2.";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "soy chica exitada, tu edad?"){//6/05/2025
+                document.getElementsByClassName('messageInput')[0].value= "27 y tu?";
             setTimeout(function(){
                 var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
                 botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
