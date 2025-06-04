@@ -19,9 +19,9 @@
 
     //1) Estilos originales de Omegle (Fuente Arial, Separacion etre mensajes, Ajuste de pagina sin scroll y ocupando el alto de pantalla)
     if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || navigator.maxTouchPoints > 0) {//Celulares o tablets
-        estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} .chatWindow div{padding-bottom: .5em; display: block; animation-name: none; animation-duration:0s ; animation-fill-mode: both; } #information{ margin-top: initial; } .information{font-size:.9em} body, html{min-height:93vh}  @keyframes claves {from {/*transform: scale(0);*/ opacity: 0;} to {/*transform: scale(1);*/ opacity: 1;} }";
+        estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} .chatWindow div{padding-bottom: .5em; display: block; animation-name: none; animation-duration:0s ; animation-fill-mode: both; } #information{ margin-top: initial; } .information{font-size:.9em} body, html{min-height:94vh}  @keyframes claves {from {/*transform: scale(0);*/ opacity: 0;} to {/*transform: scale(1);*/ opacity: 1;} } @keyframes giroLogo {0%   { transform: rotate(330deg); } 72%  { transform: rotate(-30deg); } } .logoUmegleR{ animation-duration:0.83s; animation-name: giroLogo; }";
     } else {//PC - Mac - Linux
-        estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} .chatWindow div{padding-bottom: .5em; display: block; animation-name: none; animation-duration:0s ; animation-fill-mode: both;} #information{ margin-top: initial; } .information{font-size:.9em} @keyframes claves {from {/*transform: scale(0);*/ opacity: 0;} to {/*transform: scale(1);*/ opacity: 1;} }";
+        estilos.innerHTML = "*{font-family:Arial;} .btnMsgAuto{font-size:12px; color:#000; padding:revert} .chatWindow div{padding-bottom: .5em; display: block; animation-name: none; animation-duration:0s ; animation-fill-mode: both;} #information{ margin-top: initial; } .information{font-size:.9em} @keyframes claves {from {/*transform: scale(0);*/ opacity: 0;} to {/*transform: scale(1);*/ opacity: 1;} } @keyframes giroLogo {0%   { transform: rotate(330deg); } 72%  { transform: rotate(-30deg); } } .logoUmegleR{ animation-duration:0.83s; animation-name: giroLogo; } ";
     }
 
     //2) VIBRACION AL RECIBIR NUEVO MENSAJE DEL DESCONOCIDO
@@ -62,6 +62,11 @@ const observerDCM = new MutationObserver((mutationsListDCM) => {
         chatmsgDCM.focus();
         if (textoDelBotonDCM.textContent === "Stop") {
           chatmsgDCM.value = "";
+
+            var imagenGIMG = document.getElementById("logoUmegleR");
+            imagenGIMG.classList.remove("logoUmegleR"); // reiniciar si ya estaba animada
+            void imagenGIMG.offsetWidth;              // forzar reflow
+            imagenGIMG.classList.add("logoUmegleR");
         }
           if(document.getElementById("divFinalChatBSOC")){
           document.getElementById("divFinalChatBSOC").remove();
@@ -234,10 +239,10 @@ function verificarEstiloCLA() {
 
             setTimeout(function () {
                 botonDescCLA.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
-            }, 287);
+            }, 277);
             setTimeout(function () {
                 botonDescCLA.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
-            }, 325);
+            }, 315);
         }
     }
 }
@@ -420,5 +425,44 @@ document.addEventListener("mousemove", () => {
     // Volver a iniciar la animación después de 3 segundos de inactividad
     //setTimeout(startTitleAnimationCTP, 3000);
 });
+
+    // 8) Giro del logo de umegle
+document.getElementsByClassName("logo")[0].style.display = "none";
+
+var aLogoUmegle = document.getElementsByClassName("logoLink")[0];
+    aLogoUmegle.style.display = "flex";
+    aLogoUmegle.style.margin = "10px";
+
+    var div1LogoUmegle, img1Umegle, div2LogoUmegle, img2Umegle;
+
+    div1LogoUmegle = document.createElement("div");
+    img1Umegle = document.createElement("img");
+
+    div2LogoUmegle = document.createElement("div");
+    img2Umegle = document.createElement("img");
+
+    div1LogoUmegle.setAttribute("id","logoUmegleR");
+    div1LogoUmegle.style.width = "57px";
+    div1LogoUmegle.style.overflow = "hidden";
+
+    img1Umegle.setAttribute("src", "/static/img/logo.svg");
+    img1Umegle.setAttribute("height", "57");
+    img1Umegle.style.height="171";
+
+    div2LogoUmegle.style.width = "179px";
+    div2LogoUmegle.style.overflow = "hidden";
+    div2LogoUmegle.style.flexDirection = "row-reverse";
+
+    img2Umegle.setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7u_g6qYQnM-3I99NviOgfbgL3LqIrQtQA9Q&s");
+    img2Umegle.setAttribute("height", "57");
+    img2Umegle.style.height="171";
+
+    aLogoUmegle.appendChild(div1LogoUmegle);
+    div1LogoUmegle.appendChild(img1Umegle);
+
+    aLogoUmegle.appendChild(div2LogoUmegle);
+    div2LogoUmegle.appendChild(img2Umegle);
+
+    document.getElementById("logoUmegleR").setAttribute("class", "logoUmegleR");
 
 })();
