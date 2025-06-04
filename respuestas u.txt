@@ -906,6 +906,31 @@
             }, 9);
             }
 
+            if(mensaje == "hola soy chica humeda, tu edad?"){//8/05/2025
+                document.getElementsByClassName('messageInput')[0].value= "hola pues vaya y se seca, 27 y tu?";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensaje == "hola, soy chica con calor, tu edad?"){//30/05/2025
+                document.getElementsByClassName('messageInput')[0].value= "hola pues vaya y se enfria en la nevera, 27 y tu?";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
+            if(mensajeNombre.indexOf("NOMBRE") > -1
+               && mensajeNombre.indexOf("?") > -1) {//30/05/2025
+            document.getElementsByClassName('messageInput')[0].value= "No te puedo decir porque el sitio es de chat anonimo y hay que respetar las reglas o banean";
+            setTimeout(function(){
+                var botonEnviar = document.querySelector('.bottomButton.send.outlined.noSelect.sendButton');
+                botonEnviar.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+            }, 9);
+            }
+
 
         }
             if(mensajesTotalesExtr > 0 && tamanoMensajesE == 0){
